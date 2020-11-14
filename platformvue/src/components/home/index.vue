@@ -14,7 +14,7 @@
         <template slot="title">类别</template>
         <el-menu-item index="2-1">新闻</el-menu-item>
         <el-menu-item index="2-2">视频</el-menu-item>
-        <el-menu-item index="2-3">博客</el-menu-item>
+        <el-menu-item index="2-3">博客 </el-menu-item>
       </el-submenu>
       <!-- <el-menu-item index="3">
         <a href="https://www.ele.me" target="_blank">我的</a>
@@ -28,6 +28,8 @@
     </el-menu>
     </div>
     <div class="content">
+            <a href="/login">aa</a>
+
       <div v-for="item in infolist" :key=item.name>
         <el-container>
           <!-- <el-header class="el-header">{{item.name}}</el-header> -->
