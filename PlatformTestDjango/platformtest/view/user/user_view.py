@@ -16,11 +16,14 @@ def login(request):
         username = ''
         password = ''
         logger.info(request.META.get("CONTENT_TYPE"))
-        if request.META.get("CONTENT_TYPE") == "application/json":
+        dict_json = json.loads(request.body)
+        logger.info(dict_json)
+        if request.META.get("CONTENT_TYPE") != "application/json":
             dict_json = json.loads(request.body)
             username = dict_json.get('username')
             password = dict_json.get('password')
         else:
+            logger.info(request.POST.get('username'))
             username = request.POST.get('username')
             password = request.POST.get('password')
         logger.info(username)

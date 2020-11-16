@@ -10,14 +10,13 @@
           <tr>
             <td>用户名</td>
             <td>
-              <el-input v-model="user.username" placeholder="请输入用户名"></el-input>
+              <el-input placeholder="请输入用户名" v-model="user.username" clearable></el-input>
             </td>
           </tr>
           <tr>
             <td>密码</td>
             <td>
-              <el-input type="password" v-model="user.password" placeholder="请输入密码" @keydown.enter.native="doLogin"></el-input>
-              <!-- @keydown.enter.native="doLogin"当按下enter键的时候也会执行doLogin方法-->
+              <el-input placeholder="请输入密码" v-model="user.password" show-password></el-input>
             </td>
           </tr>
           <tr>
@@ -34,8 +33,28 @@
   </div>
 </template>
 <script>
+// export default {
+// // 单页面中不支持前面的data:{}方式
+//   data() {
+//     return {
+//       user: {
+//         username: '',
+//         password: ''
+//       }
+//     }
+//   },
+//   methods: {
+//     doLogin() {
+//       alert(JSON.stringify(this.user))
+//     }
+//   }
+// }
+// </script>
+
+<script>
+const axios = require('axios')
 export default {
-// 单页面中不支持前面的data:{}方式
+  name: 'login',
   data() {
     return {
       user: {
@@ -46,7 +65,21 @@ export default {
   },
   methods: {
     doLogin() {
-      alert(JSON.stringify(this.user))
+      var that = this
+      axios.post('http://127.0.0.1:8000/user/login', {
+        "username": 'test1',
+        "password": '123456'
+      },
+      {
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+      }
+      )
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
     }
   }
 }
