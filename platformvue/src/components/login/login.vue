@@ -1,7 +1,7 @@
 <template>
   <div>
     <!--flex弹性盒子模型，justify-content：主抽 -->
-    <div style="display: flex;justify-content: center;margin-top: 150px">
+    <div style="display: flex;justify-content: center;margin-top: 160px">
       <el-card style="width: 400px">
         <div slot="header" class="clearfix">
           <span>登录</span>

@@ -31,7 +31,6 @@ def login(request):
         #     password = request.POST.get('password')
         logger.info(username)
         logger.info(password)
-
         if username == '' or password == '':
             data['code'] = 1000
             data['msg'] = '姓名或密码不能为空'
