@@ -45,6 +45,10 @@ def login(request):
             data['code'] = 200
             data['msg'] = '登录成功'
             return JsonResponse(data)
+        else:
+            data['code'] = 200
+            data['msg'] = '用户名密码不匹配'
+            return JsonResponse(data)
     except Exception as e:
         logger.info(e)
         data['code'] = 1000
