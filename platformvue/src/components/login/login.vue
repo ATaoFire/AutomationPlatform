@@ -33,25 +33,6 @@
   </div>
 </template>
 <script>
-// export default {
-// // 单页面中不支持前面的data:{}方式
-//   data() {
-//     return {
-//       user: {
-//         username: '',
-//         password: ''
-//       }
-//     }
-//   },
-//   methods: {
-//     doLogin() {
-//       alert(JSON.stringify(this.user))
-//     }
-//   }
-// }
-// </script>
-
-<script>
 const axios = require('axios')
 export default {
   name: 'login',
@@ -65,21 +46,22 @@ export default {
   },
   methods: {
     doLogin() {
-      var that = this
+      var _this = this
       axios.post('http://127.0.0.1:8000/user/login', {
-        "username": 'test1',
-        "password": '123456'
+        'username': _this.user.username,
+        'password': _this.user.password
       },
       {
-        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-      }
-      )
-      .then(function (response) {
-        console.log(response);
+        headers: {'Content-Type': 'application/json'}
       })
-      .catch(function (error) {
-        console.log(error);
-      });
+        .then(function(response) {
+          // console.log(response),
+          _this.$message(response.data.msg)
+        })
+        .catch(function(error) {
+          console.log(error)
+          // _this.$message('这是一条消息提示')
+        })
     }
   }
 }
